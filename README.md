@@ -8,10 +8,8 @@ The project for CS350 course at KAIST.
 * Bauyrzhan Tokenov
 * Miras Kabdygali
 
-## How to setup the project
+## For developers
 
-First of all, clone the repository to your local machine
+Guide for setting up the project: 
 
-```shell
-git clone https://github.com/AnuarTB/immi-cs350.git
-```
+https://docs.google.com/document/d/1Rr2o4yHyNavgIcta9G8yB3SuXah0ct9nzcQqgj0au08/edit?usp=sharing
