@@ -15,50 +15,50 @@ class ImmIDatabase {
         currencies.add(
                 Currency(
                         cur_name = "USD",
-                        usd_to_cur = 1.0f,
-                        eur_to_cur = 1.14f
+                        usd_to_cur = 1.0,
+                        eur_to_cur = 1.14
                 ))
         currencies.add(
                 Currency(
                         cur_name = "AED",
-                        usd_to_cur = 3.6731809999999996f,
-                        eur_to_cur = 4.190760928470784f
+                        usd_to_cur = 3.6731809999999996,
+                        eur_to_cur = 4.190760928470784
                 ))
         currencies.add(
                 Currency(
                         cur_name = "KZT",
-                        usd_to_cur = 370.490964f,
-                        eur_to_cur = 422.69603819759385f
+                        usd_to_cur = 370.490964,
+                        eur_to_cur = 422.69603819759385
                 ))
         currencies.add(
                 Currency(
                         cur_name = "RUB",
-                        usd_to_cur = 65.7162f,
-                        eur_to_cur = 74.97612650385912f
+                        usd_to_cur = 65.7162,
+                        eur_to_cur = 74.97612650385912
                 ))
         currencies.add(
                 Currency(
                         cur_name = "KRW",
-                        usd_to_cur = 1123.83f,
-                        eur_to_cur = 1282.1864357469237f
+                        usd_to_cur = 1123.83,
+                        eur_to_cur = 1282.1864357469237
                 ))
         currencies.add(
                 Currency(
                         cur_name = "AUD",
-                        usd_to_cur = 1.381104f,
-                        eur_to_cur = 1.5757123543203329f
+                        usd_to_cur = 1.381104,
+                        eur_to_cur = 1.5757123543203329
                 ))
         currencies.add(
                 Currency(
                         cur_name = "CAD",
-                        usd_to_cur = 1.307928f,
-                        eur_to_cur = 1.4922252836582068f
+                        usd_to_cur = 1.307928,
+                        eur_to_cur = 1.4922252836582068
                 ))
         currencies.add(
                 Currency(
                         cur_name = "AZN",
-                        usd_to_cur = 1.7025f,
-                        eur_to_cur = 1.9423955641503943f
+                        usd_to_cur = 1.7025,
+                        eur_to_cur = 1.9423955641503943
                 ))
 
 
@@ -198,6 +198,12 @@ class ImmIDatabase {
         }
     }
 
-    fun convertCurrencies(from: Currency, to: Currency) {
+
+    fun convertCurrencies(from: String, to: String, amount:Double): Double {
+        val fromCurr = findCurrencyByCode(from)!!
+        val amountToUsd = amount / fromCurr.usd_to_cur
+        val toCurr = findCurrencyByCode(to)!!
+        val result = toCurr.usd_to_cur * amountToUsd
+        return result
     }
 }
