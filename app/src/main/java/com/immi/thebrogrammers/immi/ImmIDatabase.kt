@@ -192,7 +192,7 @@ class ImmIDatabase {
         qindices.add(
                 QIndex(
                         qname = "health_care_index",
-                        descr = "Healthcare system in this city is ",
+                        descr = "Healthcare system's quality ",
                         seps = arrayOf(55.0, 70.0),
                         quals = arrayOf("bad", "moderate", "good")
                 )
@@ -201,7 +201,7 @@ class ImmIDatabase {
         qindices.add(
                 QIndex(
                         qname = "groceries_index",
-                        descr = "Cost of groceries in this city is ",
+                        descr = "Cost of groceries ",
                         seps = arrayOf(55.0, 90.0),
                         quals = arrayOf("cheap", "moderate", "expensive")
                 )
@@ -210,7 +210,7 @@ class ImmIDatabase {
         qindices.add(
                 QIndex(
                         qname = "pollution_index",
-                        descr = "Polution level in this city is ",
+                        descr = "Polution level ",
                         seps = arrayOf(42.0, 75.0),
                         quals = arrayOf("low", "moderate", "high")
                 )
@@ -219,7 +219,7 @@ class ImmIDatabase {
         qindices.add(
                 QIndex(
                         qname = "crime_index",
-                        descr = "Crime level in this city is ",
+                        descr = "Crime level ",
                         seps = arrayOf(35.0, 60.0),
                         quals = arrayOf("low", "moderate", "high")
                 )
@@ -228,7 +228,7 @@ class ImmIDatabase {
         qindices.add(
                 QIndex(
                         qname = "traffic_index",
-                        descr = "Average time spent on traffic in this city is ",
+                        descr = "Average time spent on traffic ",
                         seps = arrayOf(150.0, 225.0),
                         quals = arrayOf("low", "moderate", "high")
                 )

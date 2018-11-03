@@ -9,4 +9,12 @@ class City : GeoObject {
     this.country = country
     this.qIndices = indices
   }
+
+    fun compareCities(city2: City, qindex: QIndex): String {
+
+        val comp_adj = if (this.qIndices.get(qindex.qname)!! > city2.qIndices.get(qindex.qname)!!)
+            "higher" else "lower"
+
+        return (qindex.getCompareDescription(this, city2) + comp_adj + ".\n")
+    }
 }

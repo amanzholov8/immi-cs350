@@ -3,7 +3,7 @@ package com.immi.thebrogrammers.immi
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class ImmIDatabaseTest() {
+class ImmIDatabaseTest {
 
     @Test
     fun convertCurrencies() {
@@ -38,8 +38,8 @@ class ImmIDatabaseTest() {
         val temp2 = temp.qindices[1]
         val actual1 = temp.getQIndexByName(temp1.qname)
         val actual2 = temp.getQIndexByName(temp2.qname)
-        assertEquals(actual1, temp1)
-        assertEquals(actual2, temp2)
+        assertEquals("gettingQIndexByName for index failed", actual1, temp1)
+        assertEquals("gettingQIndexByName for index failed", actual2, temp2)
     }
 
 }
