@@ -251,6 +251,12 @@ class ImmIDatabase {
       val result = toCurr.usd_to_cur * amountToUsd
       return result
   }
-  fun getQIndexByName(qname: String) {
+
+    fun getQIndexByName(qname: String): QIndex? {
+        for (qindex in qindices) {
+            if (qindex.qname == qname)
+                return qindex
+        }
+        throw Exception("Index with name ${qname} doesn't exist")
   }
 }
