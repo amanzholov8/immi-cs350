@@ -1,11 +1,7 @@
 package com.immi.thebrogrammers.immi
 
-import android.os.Parcel
-import android.os.Parcelable
-import org.junit.Before
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 class ImmIDatabaseTest() {
 
@@ -33,6 +29,17 @@ class ImmIDatabaseTest() {
         assertEquals("Convertion from KRW to AED failed", expected2, actual2, 0.1)
         assertEquals("Convertion from FKP to KZT failed", expected3, actual3, 0.1)
         assertEquals("Convertion from AED to FKP failed", expected4, actual4, 0.1)
+    }
+
+    @Test
+    fun getQIndexByName() {
+        val temp = ImmIDatabase()
+        val temp1 = temp.qindices[0]
+        val temp2 = temp.qindices[1]
+        val actual1 = temp.getQIndexByName(temp1.qname)
+        val actual2 = temp.getQIndexByName(temp2.qname)
+        assertEquals(actual1, temp1)
+        assertEquals(actual2, temp2)
     }
 
 }
