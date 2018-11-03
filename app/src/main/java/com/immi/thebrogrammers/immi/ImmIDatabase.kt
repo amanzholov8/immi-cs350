@@ -233,6 +233,10 @@ class ImmIDatabase {
                         quals = arrayOf("low", "moderate", "high")
                 )
         )
+
+        for (cur in currencies) {
+            curr_map.put(cur.cur_name, cur)
+        }
     }
 
   fun findCurrencyByCode(curr_code: String): Currency? {
