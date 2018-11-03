@@ -188,6 +188,51 @@ class ImmIDatabase {
                         lon = 49.8670924f,
                         country = countries[7]
                 ))
+
+        qindices.add(
+                QIndex(
+                        qname = "health_care_index",
+                        descr = "Healthcare system in this city is ",
+                        seps = arrayOf(55.0, 70.0),
+                        quals = arrayOf("bad", "moderate", "good")
+                )
+        )
+
+        qindices.add(
+                QIndex(
+                        qname = "groceries_index",
+                        descr = "Cost of groceries in this city is ",
+                        seps = arrayOf(55.0, 90.0),
+                        quals = arrayOf("cheap", "moderate", "expensive")
+                )
+        )
+
+        qindices.add(
+                QIndex(
+                        qname = "pollution_index",
+                        descr = "Polution level in this city is ",
+                        seps = arrayOf(42.0, 75.0),
+                        quals = arrayOf("low", "moderate", "high")
+                )
+        )
+
+        qindices.add(
+                QIndex(
+                        qname = "crime_index",
+                        descr = "Crime level in this city is ",
+                        seps = arrayOf(35.0, 60.0),
+                        quals = arrayOf("low", "moderate", "high")
+                )
+        )
+
+        qindices.add(
+                QIndex(
+                        qname = "traffic_index",
+                        descr = "Average time spent on traffic in this city is ",
+                        seps = arrayOf(150.0, 225.0),
+                        quals = arrayOf("low", "moderate", "high")
+                )
+        )
     }
 
   fun findCurrencyByCode(curr_code: String): Currency? {
@@ -207,6 +252,5 @@ class ImmIDatabase {
       return result
   }
   fun getQIndexByName(qname: String) {
-
   }
 }
