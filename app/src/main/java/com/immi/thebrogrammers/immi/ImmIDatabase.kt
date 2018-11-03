@@ -2,11 +2,11 @@ package com.immi.thebrogrammers.immi
 
 class ImmIDatabase {
 
-    val cities = arrayListOf<City>()
-    val countries = arrayListOf<Country>()
-    val currencies = arrayListOf<Currency>()
-    val curr_map = mutableMapOf<String, Currency>()
-
+  val cities = arrayListOf<City>()
+  val countries = arrayListOf<Country>()
+  val currencies = arrayListOf<Currency>()
+  val curr_map = mutableMapOf<String, Currency>()
+  val qindices = arrayListOf<QIndex>()
 
     init {
         //NOTE: Init the arrays with some dummy data
@@ -190,20 +190,23 @@ class ImmIDatabase {
                 ))
     }
 
-    fun findCurrencyByCode(curr_code: String): Currency? {
-        if (curr_map.containsKey(curr_code)) {
-            return curr_map[curr_code]
-        } else {
-            throw Exception("Currency code ${curr_code} doesn't exist")
-        }
+  fun findCurrencyByCode(curr_code: String): Currency? {
+    if (curr_map.containsKey(curr_code)) {
+      return curr_map[curr_code]
+    } else {
+      throw Exception("Currency code ${curr_code} doesn't exist")
     }
+  }
 
 
-    fun convertCurrencies(from: String, to: String, amount:Double): Double {
-        val fromCurr = findCurrencyByCode(from)!!
-        val amountToUsd = amount / fromCurr.usd_to_cur
-        val toCurr = findCurrencyByCode(to)!!
-        val result = toCurr.usd_to_cur * amountToUsd
-        return result
-    }
+  fun convertCurrencies(from: String, to: String, amount:Double): Double {
+      val fromCurr = findCurrencyByCode(from)!!
+      val amountToUsd = amount / fromCurr.usd_to_cur
+      val toCurr = findCurrencyByCode(to)!!
+      val result = toCurr.usd_to_cur * amountToUsd
+      return result
+  }
+  fun getQIndexByName(qname: String) {
+
+  }
 }
