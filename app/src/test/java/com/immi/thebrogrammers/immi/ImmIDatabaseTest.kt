@@ -42,4 +42,15 @@ class ImmIDatabaseTest {
         assertEquals("gettingQIndexByName for index failed", actual2, temp2)
     }
 
+    @Test
+    fun searchNearbyCity() {
+        val temp = ImmIDatabase()
+        val temp1 = temp.cities[8]
+        val temp2 = temp.cities[9]
+        val temp3 = temp.cities[10]
+        val actual = temp.searchNearbyCity(temp.cities[4])
+        assertEquals("searchNearbyCity failed", actual[0].geo_name, temp1.geo_name)
+        assertEquals("searchNearbyCity failed", actual[1].geo_name, temp2.geo_name)
+        assertEquals("searchNearbyCity failed", actual[2].geo_name, temp3.geo_name)
+    }
 }
