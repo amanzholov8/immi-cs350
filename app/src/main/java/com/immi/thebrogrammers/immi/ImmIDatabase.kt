@@ -168,14 +168,16 @@ class ImmIDatabase {
         geo_name = "Ottawa",
         lat = 45.4215296f,
         lon = -75.69719309999999f,
-        country = countries[6]
+              country = countries[6],
+              indices = mutableMapOf("health_care_index" to 25.0)
       ))
     cities.add(
       City(
         geo_name = "Baku",
         lat = 40.40926169999999f,
         lon = 49.8670924f,
-        country = countries[7]
+              country = countries[7],
+              indices = mutableMapOf("health_care_index" to 20.0)
       ))
 
     //Qindices initialization
@@ -250,4 +252,12 @@ class ImmIDatabase {
     }
     throw Exception("Index with name ${qname} doesn't exist")
   }
+
+    fun getCityByName(cityName: String): City? {
+        for (city in cities) {
+            if (city.geo_name == cityName)
+                return city
+        }
+        throw Exception("City with name ${cityName} doesn't exist")
+    }
 }

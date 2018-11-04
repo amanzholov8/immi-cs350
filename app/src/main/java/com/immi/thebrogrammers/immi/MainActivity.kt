@@ -7,6 +7,8 @@ import android.view.View
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
+val db = ImmIDatabase()
+
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     val geoNames = arrayListOf<String>()
 
-    val db = ImmIDatabase()
+
 
     geoNames += db.cities.map({ c -> c.geo_name }).toTypedArray()
     //geoNames += db.countries.map({c -> c.geo_name}).toTypedArray()
