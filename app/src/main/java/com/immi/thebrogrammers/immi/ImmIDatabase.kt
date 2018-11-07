@@ -1,5 +1,8 @@
 package com.immi.thebrogrammers.immi
 
+import android.location.Location
+import android.util.Log
+
 class ImmIDatabase {
 
   val cities = arrayListOf<City>()
@@ -120,10 +123,7 @@ class ImmIDatabase {
         currency = currencies[7]
       ))
 
-
-
-
-
+    //Cities initialization
     cities.add(
       City(
         geo_name = "Seattle",
@@ -131,7 +131,6 @@ class ImmIDatabase {
         lon = 12.1f,
         country = countries[0]
       ))
-
     cities.add(
       City(
         geo_name = "Dubai",
@@ -139,7 +138,6 @@ class ImmIDatabase {
         lon = 55.2707828f,
         country = countries[1]
       ))
-
     cities.add(
       City(
         geo_name = "Almaty",
@@ -147,7 +145,6 @@ class ImmIDatabase {
         lon = 76.8512485f,
         country = countries[2]
       ))
-
     cities.add(
       City(
         geo_name = "Moscow",
@@ -155,7 +152,6 @@ class ImmIDatabase {
         lon = 37.6173f,
         country = countries[3]
       ))
-
     cities.add(
       City(
         geo_name = "Seoul",
@@ -163,7 +159,6 @@ class ImmIDatabase {
         lon = 126.9779692f,
         country = countries[4]
       ))
-
     cities.add(
       City(
         geo_name = "Melbourne",
@@ -171,23 +166,139 @@ class ImmIDatabase {
         lon = 144.963169f,
         country = countries[5]
       ))
-
     cities.add(
       City(
         geo_name = "Ottawa",
         lat = 45.4215296f,
         lon = -75.69719309999999f,
-        country = countries[6]
+        country = countries[6],
+        indices = mutableMapOf("health_care_index" to 25.0)
       ))
-
-
     cities.add(
       City(
         geo_name = "Baku",
         lat = 40.40926169999999f,
         lon = 49.8670924f,
-        country = countries[7]
+        country = countries[7],
+        indices = mutableMapOf("health_care_index" to 20.0)
       ))
+
+    //Qindices initialization
+    qindices.add(
+      QIndex(
+        qname = "health_care_index",
+        descr = "Healthcare system's quality ",
+        seps = arrayOf(55.0, 70.0),
+        quals = arrayOf("bad", "moderate", "good")
+      )
+    )
+    qindices.add(
+      QIndex(
+        qname = "groceries_index",
+        descr = "Cost of groceries ",
+        seps = arrayOf(55.0, 90.0),
+        quals = arrayOf("cheap", "moderate", "expensive")
+      )
+    )
+    qindices.add(
+      QIndex(
+        qname = "pollution_index",
+        descr = "Polution level ",
+        seps = arrayOf(42.0, 75.0),
+        quals = arrayOf("low", "moderate", "high")
+      )
+    )
+    qindices.add(
+      QIndex(
+        qname = "crime_index",
+        descr = "Crime level ",
+        seps = arrayOf(35.0, 60.0),
+        quals = arrayOf("low", "moderate", "high")
+      )
+    )
+    qindices.add(
+      QIndex(
+        qname = "traffic_index",
+        descr = "Average time spent on traffic ",
+        seps = arrayOf(150.0, 225.0),
+        quals = arrayOf("low", "moderate", "high")
+      )
+    )
+
+    cities.add(
+      City(
+        geo_name = "Busan",
+        lat = 35.1795543f,
+        lon = 129.0756416f,
+        country = countries[4]
+      ))
+
+
+    cities.add(
+      City(
+        geo_name = "Daejeon",
+        lat = 36.3504119f,
+        lon = 127.3845475f,
+        country = countries[4]
+      ))
+
+
+    cities.add(
+      City(
+        geo_name = "Gwangju",
+        lat = 35.1595454f,
+        lon = 126.8526012f,
+        country = countries[4]
+      ))
+
+    qindices.add(
+      QIndex(
+        qname = "health_care_index",
+        descr = "Healthcare system's quality ",
+        seps = arrayOf(55.0, 70.0),
+        quals = arrayOf("bad", "moderate", "good")
+      )
+    )
+
+    qindices.add(
+      QIndex(
+        qname = "groceries_index",
+        descr = "Cost of groceries ",
+        seps = arrayOf(55.0, 90.0),
+        quals = arrayOf("cheap", "moderate", "expensive")
+      )
+    )
+
+    qindices.add(
+      QIndex(
+        qname = "pollution_index",
+        descr = "Polution level ",
+        seps = arrayOf(42.0, 75.0),
+        quals = arrayOf("low", "moderate", "high")
+      )
+    )
+
+    qindices.add(
+      QIndex(
+        qname = "crime_index",
+        descr = "Crime level ",
+        seps = arrayOf(35.0, 60.0),
+        quals = arrayOf("low", "moderate", "high")
+      )
+    )
+
+    qindices.add(
+      QIndex(
+        qname = "traffic_index",
+        descr = "Average time spent on traffic ",
+        seps = arrayOf(150.0, 225.0),
+        quals = arrayOf("low", "moderate", "high")
+      )
+    )
+
+    for (cur in currencies) {
+      curr_map.put(cur.cur_name, cur)
+    }
   }
 
   fun findCurrencyByCode(curr_code: String): Currency? {
@@ -207,7 +318,65 @@ class ImmIDatabase {
     return result
   }
 
-  fun getQIndexByName(qname: String) {
 
+  fun getQIndexByName(qname: String): QIndex? {
+    for (qindex in qindices) {
+      if (qindex.qname == qname)
+        return qindex
+    }
+    throw Exception("Index with name ${qname} doesn't exist")
   }
+
+  fun getCityByName(cityName: String): City? {
+    for (city in cities) {
+      if (city.geo_name == cityName)
+        return city
+    }
+    throw Exception("City with name ${cityName} doesn't exist")
+  }
+
+  fun searchNearbyCity(city: City, thresholdDist: Double = 350.0): ArrayList<City> {
+    val nearbyCities = arrayListOf<City>()
+
+    for (each_city in cities) {
+      if (each_city.geo_name != city.geo_name &&
+        getDist(city.lat, city.lon, each_city.lat, each_city.lon) < thresholdDist) {
+        nearbyCities.add(each_city)
+      }
+    }
+    return nearbyCities
+  }
+
+  fun getDist(lat1: Float, lon1: Float, lat2: Float, lon2: Float): Double {
+    val R = 6371 // Radius of the earth in km
+    val dLat = deg2rad(lat2 - lat1)  // deg2rad below
+    val dLon = deg2rad(lon2 - lon1)
+    val a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2)
+    val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+    val d = R * c // Distance in km
+    return d
+  }
+
+  fun deg2rad(deg: Float): Double {
+    return deg * (Math.PI / 180)
+  }
+
+  // Check this function later
+  fun getDistance(lat1: Float, lon1: Float, lat2: Float, lon2: Float): Float {
+
+    val loc1 = Location("")
+    loc1.latitude = lat1.toDouble()
+    loc1.longitude = lon1.toDouble()
+    val loc2 = Location("")
+    loc2.latitude = lat2.toDouble()
+    loc2.longitude = lon2.toDouble()
+
+    val distanceInMeters = loc1.distanceTo(loc2)
+    Log.d("getDistance", "Distance: $distanceInMeters")
+    return distanceInMeters
+  }
+
 }

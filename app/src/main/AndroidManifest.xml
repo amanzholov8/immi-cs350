@@ -19,10 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".InfoShowActivity"></activity>
-
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <activity android:name=".CurrencyConverter"></activity>
+        <activity android:name=".CompareCities"></activity>
+        <activity android:name=".GeoLocationActivity"></activity>
     </application>
 
 </manifest>
