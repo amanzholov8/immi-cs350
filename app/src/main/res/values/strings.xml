@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">ImmI</string>
+    <string name="geoLocationHeading">You are located in the city of %s.</string>
+    <string name="search_bar_hint">Please select a country or city</string>
+    <string name="search_button">Search</string>
     <string name="city_placeholder">City placeholder</string>
     <string name="traffic">Traffic</string>
     <string name="pollution">Pollution</string>
@@ -9,4 +12,7 @@
     <string name="country">Country</string>
     <string name="krw">KRW</string>
     <string name="press_to_open_sidebar">Press to open sidebar</string>
+    <string name="geoLocationHeading">You are located in the city of %s.</string>
+    <string name="search_bar_hint">Please select a country or city</string>
+    <string name="search_button">Search</string>
 </resources>

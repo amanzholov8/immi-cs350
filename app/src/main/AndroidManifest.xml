@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".InfoShowActivity"></activity>
+        <activity android:name=".CurrencyConverter"></activity>
+        <activity android:name=".CompareCities"></activity>
+        <activity android:name=".GeoLocationActivity"></activity>
     </application>
 
 </manifest>
