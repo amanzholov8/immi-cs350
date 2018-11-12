@@ -7,4 +7,24 @@
     tools:context="com.immi.thebrogrammers.immi.MainActivity">
     <include layout="@layout/toolbar_layout" />
 
+    <AutoCompleteTextView
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="72dp"
+        android:hint="@string/search_bar_hint" />
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchBar"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="3dp"
+        android:onClick="onClickSearch"
+        android:text="@string/search_button" />
+
 </RelativeLayout>
