@@ -7,9 +7,12 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.view.MenuItem
 import android.view.View
 
-class InfoShowActivity : AppCompatActivity() {
+@Suppress("UNREACHABLE_CODE")
+class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
 
   lateinit var toolbar: Toolbar
   lateinit var drawerLayout: DrawerLayout
@@ -24,7 +27,7 @@ class InfoShowActivity : AppCompatActivity() {
     drawerLayout = findViewById(R.id.drawer_layout)
     navigationView = findViewById(R.id.navigation_view)
 
-    var toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer)
+    val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer)
     drawerLayout.setDrawerListener(toggle)
 
     toggle.syncState()
@@ -38,5 +41,26 @@ class InfoShowActivity : AppCompatActivity() {
     //start the new activity
     startActivity(geoLocationIntent)
 
+  }
+
+  override fun onNavigationItemSelected(item: MenuItem): Boolean {
+    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    when (item.itemId) {
+      R.id.home_id -> {
+
+      }
+      R.id.compare_id -> {
+
+      }
+      R.id.converter_id -> {
+
+      }
+      R.id.nearby_id -> {
+
+      }
+      R.id.location_id -> {
+
+      }
+    }
   }
 }
