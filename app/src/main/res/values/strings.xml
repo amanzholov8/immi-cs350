@@ -12,4 +12,12 @@
     <string name="country">Country</string>
     <string name="krw">KRW</string>
     <string name="press_to_open_sidebar">Press to open sidebar</string>
+
+    <string-array name="indexArray">
+        <item>Healthcare quality</item>
+        <item>Cost of groceries</item>
+        <item>Pollution level</item>
+        <item>Crime level</item>
+        <item>Traffic</item>
+    </string-array>
 </resources>
