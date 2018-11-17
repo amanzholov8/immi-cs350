@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
   lateinit var toolbar: Toolbar
-
+  val url = "https://www.numbeo.com/api/currency_exchange_rates?api_key=1yj7w26vkf03z6"
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
       android.R.layout.simple_list_item_1,
       geoNames)
     searchBar.setAdapter(adapter)
+    
   }
 
   fun onClickSearch(view: View) {
