@@ -11,14 +11,16 @@ class CompareCities : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_compare_cities)
+    inputCity1.setText(intent.getStringExtra("GEO_OBJECT_NAME")!!)
   }
 
   fun compareTwoCities(view: View) {
-
     val cityInput1: EditText = findViewById<EditText>(R.id.inputCity1)
     val cityInput2: EditText = findViewById<EditText>(R.id.inputCity2)
+
     val cityName1 = cityInput1.text.toString()
     val cityName2 = cityInput2.text.toString()
+
     println(cityName1)
     println(cityName2)
     //textCity1.text = city1
