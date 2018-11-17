@@ -3,7 +3,7 @@ package com.immi.thebrogrammers.immi
 import android.location.Location
 import android.util.Log
 
-class ImmIDatabase {
+object ImmIDatabase {
 
   val cities = arrayListOf<City>()
   val countries = arrayListOf<Country>()
@@ -172,7 +172,8 @@ class ImmIDatabase {
         lat = 45.4215296f,
         lon = -75.69719309999999f,
         country = countries[6],
-        indices = mutableMapOf("health_care_index" to 25.0)
+        indices = mutableMapOf("health_care_index" to 25.0, "groceries_index" to 23.0,
+          "crime_index" to 55.0, "traffic_index" to 26.0, "pollution_index" to 57.0)
       ))
     cities.add(
       City(
@@ -180,7 +181,8 @@ class ImmIDatabase {
         lat = 40.40926169999999f,
         lon = 49.8670924f,
         country = countries[7],
-        indices = mutableMapOf("health_care_index" to 20.0)
+        indices = mutableMapOf("health_care_index" to 21.0, "groceries_index" to 21.0,
+          "crime_index" to 15.0, "traffic_index" to 16.0, "pollution_index" to 17.0)
       ))
 
     //Qindices initialization

@@ -8,7 +8,9 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import android.util.Log
 import android.view.View
+import kotlinx.android.synthetic.main.activity_info_show.*
 
 @Suppress("UNREACHABLE_CODE")
 class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -20,6 +22,11 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.navigation_drawer)
+
+    val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
+    Log.d("debug_info", geoName)
+    //textview_title.text = geoName
+
 
     toolbar = findViewById<Toolbar>(R.id.toolbar)
     setSupportActionBar(toolbar)
@@ -37,6 +44,9 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
     // Create an Intent to start the GeoLocaitonActivity activity
     val geoLocationIntent = Intent(this, GeoLocationActivity::class.java)
+    val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
+
+    geoLocationIntent.putExtra("GEO_OBJECT_NAME", geoName)
 
     //start the new activity
     startActivity(geoLocationIntent)
@@ -62,5 +72,24 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
       }
     }
+  }
+
+  fun compareCitiesButton(view: View) {
+
+    val compareCitiesIntent = Intent(this, CompareCities::class.java)
+    val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
+
+    compareCitiesIntent.putExtra("GEO_OBJECT_NAME", geoName)
+
+    startActivity(compareCitiesIntent)
+
+  }
+
+  fun currencyConverterButton(view: View) {
+
+    val currencyConverterIntent = Intent(this, CurrencyConverter::class.java)
+
+    startActivity(currencyConverterIntent)
+
   }
 }
