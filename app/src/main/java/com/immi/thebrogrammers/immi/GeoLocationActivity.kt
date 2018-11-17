@@ -10,7 +10,6 @@ import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_geo_location.*
 
 class GeoLocationActivity : AppCompatActivity() {
-  val db = ImmIDatabase()
   lateinit var scroll: ListView
 
 
@@ -21,11 +20,11 @@ class GeoLocationActivity : AppCompatActivity() {
     scroll = findViewById<ListView>(R.id.scroll)
 
     val myCityName = intent.getStringExtra("GEO_OBJECT_NAME")!!
-    val myCity = db.getCityByName(myCityName)
+    val myCity = ImmIDatabase.getCityByName(myCityName)
 
     textView_message.text = getString(R.string.geoLocationHeading, myCityName)
 
-    val nearbyCities = db.searchNearbyCity(myCity!!)
+    val nearbyCities = ImmIDatabase.searchNearbyCity(myCity!!)
     val nearbyCitiesNames = nearbyCities.map({ c -> c.geo_name })
 
     scroll.adapter = ArrayAdapter<String>(

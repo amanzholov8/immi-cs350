@@ -3,7 +3,7 @@ package com.immi.thebrogrammers.immi
 import android.location.Location
 import android.util.Log
 
-class ImmIDatabase {
+object ImmIDatabase {
 
   val cities = arrayListOf<City>()
   val countries = arrayListOf<Country>()

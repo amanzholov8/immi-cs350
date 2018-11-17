@@ -8,8 +8,6 @@ import android.view.View
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
-val db = ImmIDatabase()
-
 class MainActivity : AppCompatActivity() {
 
   lateinit var toolbar: Toolbar
@@ -23,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     val geoNames = arrayListOf<String>()
 
-    geoNames += db.cities.map({ c -> c.geo_name }).toTypedArray()
+    geoNames += ImmIDatabase.cities.map({ c -> c.geo_name }).toTypedArray()
     //geoNames += db.countries.map({c -> c.geo_name}).toTypedArray()
     val adapter = ArrayAdapter<String>(
       this,
