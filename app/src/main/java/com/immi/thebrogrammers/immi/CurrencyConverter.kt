@@ -13,12 +13,11 @@ class CurrencyConverter : AppCompatActivity() {
   lateinit var from: Spinner
   lateinit var to: Spinner
   val currencies = arrayListOf<Currency>()
-  val db = ImmIDatabase()
   lateinit var result: TextView
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(activity_currency_converter)
-    val currencies = db.currencies.map({ c -> c.cur_name })
+    val currencies = ImmIDatabase.currencies.map({ c -> c.cur_name })
     from = findViewById<Spinner>(R.id.fromCurrencies)
     to = findViewById<Spinner>(R.id.toCurrencies)
 
@@ -36,7 +35,7 @@ class CurrencyConverter : AppCompatActivity() {
 
     val operand = getOperand(findViewById<EditText>(R.id.operand))
 
-    result.text = db.convertCurrencies(fromResult, toResult, operand).toString()
+    result.text = ImmIDatabase.convertCurrencies(fromResult, toResult, operand).toString()
   }
 
   fun getOperand(operandEditText: EditText): Double {

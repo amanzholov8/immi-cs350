@@ -17,4 +17,38 @@
         android:text="City/Country"
         android:textAlignment="center"
         android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/nerbyCities"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="218dp"
+        android:onClick="nearbyCities"
+        android:text="Nearby Cities"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/compareCites"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="213dp"
+        android:onClick="compareCitiesButton"
+        android:text="Compare Cities"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/currencyConverter"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="122dp"
+        android:onClick="currencyConverterButton"
+        android:text="Currency Converter"
+        android:textSize="20sp" />
+
 </RelativeLayout>

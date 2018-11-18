@@ -29,9 +29,31 @@ class InfoShowActivity : AppCompatActivity() {
 
     // Create an Intent to start the GeoLocaitonActivity activity
     val geoLocationIntent = Intent(this, GeoLocationActivity::class.java)
+    val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
+
+    geoLocationIntent.putExtra("GEO_OBJECT_NAME", geoName)
 
     //start the new activity
     startActivity(geoLocationIntent)
+
+  }
+
+  fun compareCitiesButton(view: View) {
+
+    val compareCitiesIntent = Intent(this, CompareCities::class.java)
+    val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
+
+    compareCitiesIntent.putExtra("GEO_OBJECT_NAME", geoName)
+
+    startActivity(compareCitiesIntent)
+
+  }
+
+  fun currencyConverterButton(view: View) {
+
+    val currencyConverterIntent = Intent(this, CurrencyConverter::class.java)
+
+    startActivity(currencyConverterIntent)
 
   }
 }
