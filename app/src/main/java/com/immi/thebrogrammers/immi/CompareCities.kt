@@ -45,6 +45,8 @@ class CompareCities : AppCompatActivity() {
     val qindexString = indMap[spinnerText]
     val city1 = ImmIDatabase.getCityByName(cityName1)
     val city2 = ImmIDatabase.getCityByName(cityName2)
+    city1?.qIndices = ImmIParser.getQIndices(cityName1)
+    city2?.qIndices = ImmIParser.getQIndices(cityName2)
     val qindex = ImmIDatabase.getQIndexByName(qindexString!!)
     val ans = city1?.compareCities(city2!!, qindex!!)
     answerText.text = ans
