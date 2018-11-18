@@ -24,6 +24,7 @@ object ImmIParser {
       try {
         //Your code goes here
         ret = ImmIParser.run(url)
+        println(ret)
       } catch (e: Exception) {
         e.printStackTrace()
       }
