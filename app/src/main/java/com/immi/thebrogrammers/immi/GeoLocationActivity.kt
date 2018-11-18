@@ -19,7 +19,9 @@ class GeoLocationActivity : AppCompatActivity() {
 
     scroll = findViewById<ListView>(R.id.scroll)
 
-    val myCityName = intent.getStringExtra("GEO_OBJECT_NAME")!!
+    var myCityName = "Daejeon"
+    if (intent.hasExtra("GEO_OBJECT_NAME"))
+      myCityName = intent.getStringExtra("GEO_OBJECT_NAME")
     val myCity = ImmIDatabase.getCityByName(myCityName)
 
     textView_message.text = getString(R.string.geoLocationHeading, myCityName)

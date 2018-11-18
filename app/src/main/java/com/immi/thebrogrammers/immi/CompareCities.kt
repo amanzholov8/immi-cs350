@@ -15,7 +15,9 @@ class CompareCities : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_compare_cities)
-    inputCity1.setText(intent.getStringExtra("GEO_OBJECT_NAME")!!)
+    if (intent.hasExtra("GEO_OBJECT_NAME")) {
+      inputCity1.setText(intent.getStringExtra("GEO_OBJECT_NAME")!!)
+    }
     // Create an ArrayAdapter using the string array and a default spinner layout
     ArrayAdapter.createFromResource(
       this,
