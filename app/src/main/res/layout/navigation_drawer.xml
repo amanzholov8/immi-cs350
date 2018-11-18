@@ -9,7 +9,7 @@
     tools:background="@android:color/transparent"
     tools:openDrawer="start">
 
-    <include layout="@layout/activity_info_show"></include>
+    <include layout="@layout/activity_info_show" />
     <!--<include layout="@layout/activity_main"></include>-->
     <!--<include layout="@layout/activity_currency_converter"></include>-->
     <!--<include layout="@layout/activity_compare_cities"></include>-->
@@ -21,6 +21,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/navigation_menu"></android.support.design.widget.NavigationView>
+        app:menu="@menu/navigation_menu" />
 
 </android.support.v4.widget.DrawerLayout>
