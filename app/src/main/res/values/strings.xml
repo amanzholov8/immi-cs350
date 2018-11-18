@@ -12,6 +12,18 @@
     <string name="country">Country</string>
     <string name="krw">KRW</string>
     <string name="press_to_open_sidebar">Press to open sidebar</string>
+    <string name="immi">ImmI</string>
+    <string name="home">Home</string>
+    <string name="compare_cities">Compare cities</string>
+    <string name="currency_converter">Currency converter</string>
+    <string name="nearby_cities">Nearby cities</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="geo_location">Geo location</string>
+    <string name="bgLayput"></string>
+    <string name="united_arab_emirates">United Arab Emirates</string>
+    <string name="aed">AED</string>
+    <string name="dubai">Dubai</string>
 
     <string-array name="indexArray">
         <item>Healthcare quality</item>
