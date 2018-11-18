@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import kotlinx.android.synthetic.main.activity_info_show.*
+
 
 @Suppress("UNREACHABLE_CODE")
 class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -21,6 +23,13 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.navigation_drawer)
+    var geo_name: String
+    if (intent.hasExtra("GEO_OBJECT_NAME")) {
+      cityText.text = intent.getStringExtra("GEO_OBJECT_NAME")!!
+      val curCity = (ImmIDatabase.getCityByName(cityText.text.toString()))
+      countryText.text = curCity?.country
+      //countryText.setText(curCity?.currency)
+    }
 
     val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
     Log.d("debug_info", geoName)

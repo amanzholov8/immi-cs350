@@ -131,7 +131,7 @@ object ImmIDatabase {
       if (qindex.qname == qname)
         return qindex
     }
-    throw Exception("Index with name ${qname} doesn't exist")
+    return null
   }
 
   fun getCityByName(cityName: String): City? {
@@ -139,8 +139,9 @@ object ImmIDatabase {
       if (city.geo_name == cityName)
         return city
     }
-    throw Exception("City with name ${cityName} doesn't exist")
+    return null
   }
+
 
   fun searchNearbyCity(city: City, thresholdDist: Double = 350.0): ArrayList<City> {
     val nearbyCities = arrayListOf<City>()
