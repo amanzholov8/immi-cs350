@@ -1,86 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-
-
+    android:layout_alignParentStart="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginStart="12dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginTop="0dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginRight="12dp"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".CompareCities">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/text_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter two cities to compare"
+        android:textSize="24sp" />
 
-        android:layout_width="240dp"
-        android:layout_height="292dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="130dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="130dp"
-        android:orientation="vertical">
+    <AutoCompleteTextView
+        android:id="@+id/inputCity1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="42dp"
+        android:hint="City 1" />
 
-        <TextView
-            android:id="@+id/text_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enter two cities to compare"
-            android:textSize="24sp" />
+    <AutoCompleteTextView
+        android:id="@+id/inputCity2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="30dp"
+        android:hint="City 2" />
 
-        <EditText
-            android:id="@+id/inputCity1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="City 1"
-            android:inputType="textPersonName" />
+    <Spinner
+        android:id="@+id/indexSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp" />
 
-        <EditText
-            android:id="@+id/inputCity2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="City 2"
-            android:inputType="textPersonName" />
-
-        <Spinner
-            android:id="@+id/indexSpinner"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/compareButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="compareTwoCities"
-            android:text="Compare" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/compareButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:onClick="compareTwoCities"
+        android:text="Compare" />
 
     <TextView
         android:id="@+id/answerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="215dp"
-        android:layout_marginRight="215dp"
-        android:layout_marginBottom="69dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:text="Info loading..."
         android:textColor="@android:color/holo_green_dark"
         android:textSize="24sp" />
-
     <include layout="@layout/toolbar_layout" />
-</RelativeLayout>
+</LinearLayout>
+

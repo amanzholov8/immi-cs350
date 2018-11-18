@@ -1,11 +1,14 @@
 package com.immi.thebrogrammers.immi
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_compare_cities.*
+
 
 class CompareCities : AppCompatActivity() {
 
@@ -24,6 +27,14 @@ class CompareCities : AppCompatActivity() {
       // Apply the adapter to the spinner
       indexSpinner.adapter = adapter
     }
+    val geoNames = arrayListOf<String>()
+    geoNames += ImmIDatabase.cities.map({ c -> c.geo_name }).toTypedArray()
+    val adapter = ArrayAdapter<String>(
+      this,
+      android.R.layout.simple_list_item_1,
+      geoNames)
+    inputCity1.setAdapter(adapter)
+    inputCity2.setAdapter(adapter)
   }
 
   fun compareTwoCities(view: View) {
@@ -33,8 +44,6 @@ class CompareCities : AppCompatActivity() {
     val cityName1 = cityInput1.text.toString()
     val cityName2 = cityInput2.text.toString()
 
-    println(cityName1)
-    println(cityName2)
     val spinnerText = indexSpinner.selectedItem.toString()
     val indMap = mapOf(
       "Healthcare quality" to "health_care_index",
@@ -48,5 +57,7 @@ class CompareCities : AppCompatActivity() {
     val qindex = ImmIDatabase.getQIndexByName(qindexString!!)
     val ans = city1?.compareCities(city2!!, qindex!!)
     answerText.text = ans
+    val mgr = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    mgr.hideSoftInputFromWindow(inputCity2.windowToken, 0)
   }
 }
