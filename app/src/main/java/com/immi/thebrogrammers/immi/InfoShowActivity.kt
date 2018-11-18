@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 
 @Suppress("UNREACHABLE_CODE")
 class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -40,18 +39,6 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     toggle.syncState()
   }
 
-  fun nearbyCities(view: View) {
-
-    // Create an Intent to start the GeoLocaitonActivity activity
-    val geoLocationIntent = Intent(this, GeoLocationActivity::class.java)
-    val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
-
-    geoLocationIntent.putExtra("GEO_OBJECT_NAME", geoName)
-
-    //start the new activity
-    startActivity(geoLocationIntent)
-
-  }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
@@ -62,9 +49,12 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
       }
 
       R.id.compare_id -> {
-        val compareIntent = Intent(this, CompareCities::class.java)
+        val compareCitiesIntent = Intent(this, CompareCities::class.java)
+        val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
 
-        startActivity(compareIntent)
+        compareCitiesIntent.putExtra("GEO_OBJECT_NAME", geoName)
+
+        startActivity(compareCitiesIntent)
       }
       R.id.converter_id -> {
         val converterIntent = Intent(this, CurrencyConverter::class.java)
@@ -72,9 +62,14 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         startActivity(converterIntent)
       }
       R.id.nearby_id -> {
-        val nearbyIntent = Intent(this, GeoLocationActivity::class.java)
+        // Create an Intent to start the GeoLocaitonActivity activity
+        val geoLocationIntent = Intent(this, GeoLocationActivity::class.java)
+        val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
 
-        startActivity(nearbyIntent)
+        geoLocationIntent.putExtra("GEO_OBJECT_NAME", geoName)
+
+        //start the new activity
+        startActivity(geoLocationIntent)
       }
       R.id.location_id -> {
         val homeIntent = Intent(this, MainActivity::class.java)
@@ -83,24 +78,5 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
       }
     }
     return true
-  }
-
-  fun compareCitiesButton(view: View) {
-
-    val compareCitiesIntent = Intent(this, CompareCities::class.java)
-    val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
-
-    compareCitiesIntent.putExtra("GEO_OBJECT_NAME", geoName)
-
-    startActivity(compareCitiesIntent)
-
-  }
-
-  fun currencyConverterButton(view: View) {
-
-    val currencyConverterIntent = Intent(this, CurrencyConverter::class.java)
-
-    startActivity(currencyConverterIntent)
-
   }
 }
