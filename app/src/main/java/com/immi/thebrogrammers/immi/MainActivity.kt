@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     val geoNames = arrayListOf<String>()
 
     geoNames += ImmIDatabase.cities.map({ c -> c.geo_name }).toTypedArray()
-    //geoNames += db.countries.map({c -> c.geo_name}).toTypedArray()
     val adapter = ArrayAdapter<String>(
       this,
       android.R.layout.simple_list_item_1,

@@ -28,16 +28,13 @@ class CompareCities : AppCompatActivity() {
       indexSpinner.adapter = adapter
     }
     val geoNames = arrayListOf<String>()
-
-    geoNames += db.cities.map({ c -> c.geo_name }).toTypedArray()
-    //geoNames += db.countries.map({c -> c.geo_name}).toTypedArray()
+    geoNames += ImmIDatabase.cities.map({ c -> c.geo_name }).toTypedArray()
     val adapter = ArrayAdapter<String>(
       this,
       android.R.layout.simple_list_item_1,
       geoNames)
     inputCity1.setAdapter(adapter)
     inputCity2.setAdapter(adapter)
-
   }
 
   fun compareTwoCities(view: View) {
@@ -47,8 +44,6 @@ class CompareCities : AppCompatActivity() {
     val cityName1 = cityInput1.text.toString()
     val cityName2 = cityInput2.text.toString()
 
-    println(cityName1)
-    println(cityName2)
     val spinnerText = indexSpinner.selectedItem.toString()
     val indMap = mapOf(
       "Healthcare quality" to "health_care_index",
