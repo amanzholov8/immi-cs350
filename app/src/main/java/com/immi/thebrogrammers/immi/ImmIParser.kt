@@ -9,7 +9,7 @@ object ImmIParser {
   var client = OkHttpClient()
   val curr_host = "https://www.numbeo.com/api/currency_exchange_rates?api_key=1yj7w26vkf03z6"
   val cities_host = "https://www.numbeo.com/api/cities?api_key=1yj7w26vkf03z6"
-  val indeces_host = "https://www.numbeo.com/api/indices?api_key=1yj7w26vkf03z6&query="
+  val indices_host = "https://www.numbeo.com/api/indices?api_key=1yj7w26vkf03z6&query="
   @Throws(IOException::class)
   fun run(url: String): String {
     val request = Request.Builder()
@@ -50,10 +50,10 @@ object ImmIParser {
   }
 
   fun getQIndices(name: String): MutableMap<String, Double> {
-    val url = indeces_host + name
+    val url = indices_host + name
     val body = ImmIParser.makeReq(url)
     val gson = GsonBuilder().create()
-    val homefeed = gson.fromJson(body, QIndeces::class.java)
+    val homefeed = gson.fromJson(body, QIndices::class.java)
     val map = mutableMapOf("crime_index" to homefeed.crime_index,
       "traffic_time_index" to homefeed.traffic_time_index,
       "health_care_index" to homefeed.health_care_index,
@@ -65,7 +65,7 @@ object ImmIParser {
 
 }
 
-class QIndeces(
+class QIndices(
   val crime_index: Double,
   val traffic_time_index: Double,
   val health_care_index: Double,

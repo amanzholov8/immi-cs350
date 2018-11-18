@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
       android.R.layout.simple_list_item_1,
       geoNames)
     searchBar.setAdapter(adapter)
-
   }
 
   fun onClickSearch(view: View) {
