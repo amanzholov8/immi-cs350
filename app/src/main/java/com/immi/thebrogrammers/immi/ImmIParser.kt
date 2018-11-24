@@ -68,7 +68,7 @@ object ImmIParser {
     return map
   }
 
-  fun getHealthSubQIndeces(city_name: String): MutableMap<String, Double> {
+  fun getHealthSubQIndices(city_name: String): MutableMap<String, Double> {
     val url = buildURL(city_health, city_name)
     val body = ImmIParser.makeReq(url)
     val gson = GsonBuilder().create()
