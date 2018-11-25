@@ -10,7 +10,7 @@ object ImmIDatabase {
   val currencies = ImmIParser.getCurrencies().exchange_rates
   val curr_map = mutableMapOf<String, Currency>()
   val qindices = arrayListOf<QIndex>()
-
+  val categoryMap: MutableMap<String, String> = mutableMapOf()
   init {
     //NOTE: Init the arrays with some dummy data
 
