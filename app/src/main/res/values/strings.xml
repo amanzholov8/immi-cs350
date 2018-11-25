@@ -20,7 +20,6 @@
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
     <string name="geo_location">Geo location</string>
-    <string name="bgLayput"></string>
     <string name="united_arab_emirates">United Arab Emirates</string>
     <string name="aed">AED</string>
     <string name="dubai">Dubai</string>
@@ -32,4 +31,8 @@
         <item>Crime level</item>
         <item>Traffic</item>
     </string-array>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

@@ -2,15 +2,16 @@ package com.immi.thebrogrammers.immi
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
-import kotlinx.android.synthetic.main.activity_info_show.*
+import android.widget.ListView
 
 @Suppress("UNREACHABLE_CODE")
 class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -19,16 +20,12 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
   lateinit var toolbar: Toolbar
   lateinit var drawerLayout: DrawerLayout
   lateinit var navigationView: NavigationView
+  lateinit var bottomNavView: BottomNavigationView
+  lateinit var scroll: ListView
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.navigation_drawer)
-    var geo_name: String
-    if (intent.hasExtra("GEO_OBJECT_NAME")) {
-      cityText.text = intent.getStringExtra("GEO_OBJECT_NAME")!!
-      val curCity = (ImmIDatabase.getCityByName(cityText.text.toString()))
-      countryText.text = curCity?.country
-      //countryText.setText(curCity?.currency)
-    }
 
     val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
     Log.d("debug_info", geoName)
@@ -46,8 +43,51 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
     navigationView.setNavigationItemSelectedListener(this)
 
     toggle.syncState()
+
+    bottomNavView = findViewById(R.id.bottom_navigation)
+
+    val qindex = ImmIDatabase.qindices
+
+    loadFragment(CostFragment())
+
+    bottomNavView.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
+      override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        lateinit var fragment: Fragment
+        when (item.itemId) {
+          R.id.action_money -> {
+            fragment = CostFragment()
+          }
+
+          R.id.action_crime -> {
+            fragment = CrimeFragment()
+          }
+
+          R.id.action_eco -> {
+            fragment = PollutionFragment()
+          }
+
+          R.id.action_traffic -> {
+            fragment = TrafficFragment()
+          }
+
+          R.id.action_med -> {
+            fragment = HealthFragment()
+          }
+        }
+        return loadFragment(fragment)
+      }
+    })
   }
 
+  fun loadFragment(fragment: Fragment): Boolean {
+    if (fragment != null) {
+      supportFragmentManager.beginTransaction()
+        .replace(R.id.fragment_container, fragment)
+        .commit()
+      return true
+    }
+    return false
+  }
 
   override fun onNavigationItemSelected(item: MenuItem): Boolean {
     when (item.itemId) {
