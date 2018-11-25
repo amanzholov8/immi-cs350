@@ -1,9 +1,11 @@
 package com.immi.thebrogrammers.immi
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
@@ -77,8 +79,8 @@ class CompareCities : AppCompatActivity() {
         Toast.LENGTH_SHORT
       ).show()
     }
-    //val mgr = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    //mgr.hideSoftInputFromWindow(inputCity2.windowToken, 0)
+    val mgr = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    mgr.hideSoftInputFromWindow(inputCity2.windowToken, 0)
   }
 
   private fun loadFragment(fragment: Fragment?): Boolean {
