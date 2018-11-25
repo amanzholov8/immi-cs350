@@ -1,12 +1,12 @@
 package com.immi.thebrogrammers.immi
 
-import android.content.Context
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_compare_cities.*
 
 
@@ -60,8 +60,34 @@ class CompareCities : AppCompatActivity() {
     city2?.qIndices = ImmIParser.getQIndices(cityName2)
     val qindex = ImmIDatabase.getQIndexByName(qindexString!!)
     val ans = city1?.compareCities(city2!!, qindex!!)
-    answerText.text = ans
-    val mgr = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    mgr.hideSoftInputFromWindow(inputCity2.windowToken, 0)
+    //answerText.text = ans
+    val f: Fragment
+    when (qindexString) {
+      "health_care_index" -> {
+        f = HealthCompare()
+      }
+      else -> {
+        f = HealthCompare()
+      }
+    }
+    if (!loadFragment(f)) {
+      Toast.makeText(
+        this,
+        "Something went wrong with service :(",
+        Toast.LENGTH_SHORT
+      ).show()
+    }
+    //val mgr = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    //mgr.hideSoftInputFromWindow(inputCity2.windowToken, 0)
+  }
+
+  private fun loadFragment(fragment: Fragment?): Boolean {
+    if (fragment != null) {
+      supportFragmentManager.beginTransaction()
+        .replace(R.id.fragment_compare_containter, fragment)
+        .commit()
+      return true
+    }
+    return false
   }
 }
