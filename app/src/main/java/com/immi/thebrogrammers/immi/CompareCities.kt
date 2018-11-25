@@ -1,9 +1,11 @@
 package com.immi.thebrogrammers.immi
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
@@ -48,28 +50,54 @@ class CompareCities : AppCompatActivity() {
 
     val spinnerText = indexSpinner.selectedItem.toString()
     val indMap = mapOf(
-      "Healthcare quality" to "health_care_index",
-      "Cost of groceries" to "groceries_index",
-      "Pollution level" to "pollution_index",
-      "Crime level" to "crime_index",
-      "Traffic" to "traffic_index")
+      "Healthcare quality" to "Healthcare index",
+      "Cost of groceries" to "Cost of living index",
+      "Pollution level" to "Pollution index",
+      "Crime level" to "Crime index",
+      "Traffic" to "Traffic time index")
     val qindexString = indMap[spinnerText]
-    val city1 = ImmIDatabase.getCityByName(cityName1)
-    val city2 = ImmIDatabase.getCityByName(cityName2)
-    city1?.qIndices = ImmIParser.getQIndices(cityName1)
-    city2?.qIndices = ImmIParser.getQIndices(cityName2)
-    val qindex = ImmIDatabase.getQIndexByName(qindexString!!)
-    val ans = city1?.compareCities(city2!!, qindex!!)
-    //answerText.text = ans
+    val city1 = ImmIDatabase.getCityByName(cityName1)!!
+    val city2 = ImmIDatabase.getCityByName(cityName2)!!
+    if (city1.qIndices == null)
+      city1.qIndices = ImmIParser.getQIndices((cityName1))
+
+    if (city2.qIndices == null)
+      city2.qIndices = ImmIParser.getQIndices((cityName2))
+
     val f: Fragment
+
     when (qindexString) {
-      "health_care_index" -> {
+      "Healthcare index" -> {
+        city1.qIndices = (city1.qIndices + ImmIParser.getHealthSubQIndices((cityName1))).toMutableMap()
+        city2.qIndices = (city2.qIndices + ImmIParser.getHealthSubQIndices((cityName2))).toMutableMap()
+        f = HealthCompare()
+      }
+      "Cost of living index" -> {
+        city1.qIndices = (city1.qIndices + ImmIParser.getGroceriesSubQIndices((cityName1))).toMutableMap()
+        city2.qIndices = (city2.qIndices + ImmIParser.getGroceriesSubQIndices((cityName2))).toMutableMap()
+        f = HealthCompare()
+      }
+      "Pollution index" -> {
+        city1.qIndices = (city1.qIndices + ImmIParser.getPollutionSubQIndices((cityName1))).toMutableMap()
+        city2.qIndices = (city2.qIndices + ImmIParser.getPollutionSubQIndices((cityName2))).toMutableMap()
+        f = HealthCompare()
+      }
+      "Crime index" -> {
+        city1.qIndices = (city1.qIndices + ImmIParser.getCrimeSubQIndices((cityName1))).toMutableMap()
+        city2.qIndices = (city2.qIndices + ImmIParser.getCrimeSubQIndices((cityName2))).toMutableMap()
+        f = HealthCompare()
+      }
+      "Traffic time index" -> {
+        city1.qIndices = (city1.qIndices + ImmIParser.getTrafficSubQIndices((cityName1))).toMutableMap()
+        city2.qIndices = (city2.qIndices + ImmIParser.getTrafficSubQIndices((cityName2))).toMutableMap()
         f = HealthCompare()
       }
       else -> {
         f = HealthCompare()
       }
     }
+    //each city has qindices map<String, Double>, it gets updated in required category by pressing "compare" button in CompareCities
+    //and there is a map in ImmiDatabase which maps SubQindices to their corresponding categories(e.g. "skill and competency of staff" to "Healthcare");
     if (!loadFragment(f)) {
       Toast.makeText(
         this,
@@ -77,8 +105,9 @@ class CompareCities : AppCompatActivity() {
         Toast.LENGTH_SHORT
       ).show()
     }
-    //val mgr = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    //mgr.hideSoftInputFromWindow(inputCity2.windowToken, 0)
+
+    val mgr = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    mgr.hideSoftInputFromWindow(inputCity2.windowToken, 0)
   }
 
   private fun loadFragment(fragment: Fragment?): Boolean {
