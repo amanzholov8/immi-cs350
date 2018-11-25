@@ -18,10 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InfoShowActivity"></activity>
-        <activity android:name=".CurrencyConverter"></activity>
-        <activity android:name=".CompareCities"></activity>
-        <activity android:name=".GeoLocationActivity"></activity>
+        <activity android:name=".InfoShowActivity" />
+        <activity android:name=".CurrencyConverter" />
+        <activity android:name=".CompareCities" />
+        <activity android:name=".GeoLocationActivity" />
     </application>
 
 </manifest>
