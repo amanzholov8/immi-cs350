@@ -31,7 +31,6 @@ object ImmIParser {
       try {
         //Your code goes here
         ret = ImmIParser.run(url)
-        println(ret)
       } catch (e: Exception) {
         e.printStackTrace()
       }
@@ -73,14 +72,38 @@ object ImmIParser {
     val body = ImmIParser.makeReq(url)
     val gson = GsonBuilder().create()
     val homefeed = gson.fromJson(body, HealthQIndices::class.java)
-    val map = mutableMapOf("Skill and competency of medical staff" to homefeed.skill_and_competency,
-      "Speed in completing examination and reports" to homefeed.speed,
-      "Equipment for modern diagnosis and treatment" to homefeed.modern_equipment,
-      "Accuracy and completeness in filling out reports" to homefeed.accuracy_and_completeness,
-      "Friendliness and courtesy of the staff" to homefeed.friendliness_and_courtesy,
-      "Satisfaction with responsiveness (waitings) in medical institutions" to homefeed.responsiveness_waitings,
-      "Satisfaction with cost to you" to homefeed.cost,
-      "Convenience of location for you" to homefeed.location)
+    val map = mutableMapOf("Skill and competency of medical staff" to normalization(homefeed.skill_and_competency),
+      "Speed in completing examination and reports" to normalization(homefeed.speed),
+      "Equipment for modern diagnosis and treatment" to normalization(homefeed.modern_equipment),
+      "Accuracy and completeness in filling out reports" to normalization(homefeed.accuracy_and_completeness),
+      "Friendliness and courtesy of the staff" to normalization(homefeed.friendliness_and_courtesy),
+      "Satisfaction with responsiveness (waitings) in medical institutions" to normalization(homefeed.responsiveness_waitings),
+      "Satisfaction with cost to you" to normalization(homefeed.cost),
+      "Convenience of location for you" to normalization(homefeed.location))
+    return map
+  }
+
+  fun getCrimeSubQIndices(city_name: String): MutableMap<String, Double> {
+    val url = buildURL(city_crime, city_name)
+    val body = ImmIParser.makeReq(url)
+    val gson = GsonBuilder().create()
+    val homefeed = gson.fromJson(body, CrimeQIndices::class.java)
+    val map = mutableMapOf("\n" +
+      "Level of crime" to normalization(homefeed.level_of_crime),
+      "Crime increasing in the past 3 years" to normalization(homefeed.crime_increasing),
+      "Worries home broken and things stolen" to normalization(homefeed.worried_home_broken),
+      "Worries being mugged or robbed" to normalization(homefeed.worried_mugged_robbed),
+      "Worries car stolen" to normalization(homefeed.worried_car_stolen),
+      "Worries things from car stolen" to normalization(homefeed.worried_things_car_stolen),
+      "Worries attacked" to normalization(homefeed.worried_attacked),
+      "Worries being insulted" to normalization(homefeed.worried_insulted),
+      "Worries being subject to a physical attack because of your skin colour, ethnic origin or religion" to normalization(homefeed.worried_skin_ethnic_religion),
+      "Problem people using or dealing drugs" to normalization(homefeed.problem_drugs),
+      "Problem property crimes such as vandalism and theft" to normalization(homefeed.problem_property_crimes),
+      "Problem violent crimes such as assault and armed robbery" to normalization(homefeed.problem_violent_crimes),
+      "Problem corruption and bribery" to normalization(homefeed.problem_corruption_bribery),
+      "Safety walking alone during daylight" to normalization(homefeed.safe_alone_daylight),
+      "Safety walking alone during night" to normalization(homefeed.safe_alone_night))
     return map
   }
 
@@ -89,6 +112,10 @@ object ImmIParser {
     val api = "?api_key=1yj7w26vkf03z6"
     val query = "&query="
     return head + category_of_index + api + query + city_name;
+  }
+
+  fun normalization(value: Double): Double {
+    return (value + 2) * 25
   }
 }
 
@@ -108,6 +135,23 @@ class HealthQIndices(
   val friendliness_and_courtesy: Double,
   val modern_equipment: Double,
   val location: Double)
+
+class CrimeQIndices(
+  val worried_attacked: Double,
+  val problem_property_crimes: Double,
+  val safe_alone_night: Double,
+  val worried_skin_ethnic_religion: Double,
+  val worried_car_stolen: Double,
+  val worried_home_broken: Double,
+  val worried_things_car_stolen: Double,
+  val crime_increasing: Double,
+  val problem_corruption_bribery: Double,
+  val safe_alone_daylight: Double,
+  val problem_drugs: Double,
+  val worried_insulted: Double,
+  val problem_violent_crimes: Double,
+  val worried_mugged_robbed: Double,
+  val level_of_crime: Double)
 
 class CitiesFeed(val cities: List<City>)
 class CurrFeed(val exchange_rates: List<Currency>)
