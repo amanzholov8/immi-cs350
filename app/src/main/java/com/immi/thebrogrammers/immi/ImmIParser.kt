@@ -67,7 +67,7 @@ object ImmIParser {
     return map
   }
 
-  fun getHealthSubQIndices(city_name: String): MutableMap<String, Int> {
+  fun getHealthSubQIndices(city_name: String): MutableMap<String, Double> {
     val url = buildURL(city_health, city_name)
     val body = ImmIParser.makeReq(url)
     val gson = GsonBuilder().create()
@@ -83,7 +83,7 @@ object ImmIParser {
     return map
   }
 
-  fun getCrimeSubQIndices(city_name: String): MutableMap<String, Int> {
+  fun getCrimeSubQIndices(city_name: String): MutableMap<String, Double> {
     val url = buildURL(city_crime, city_name)
     val body = ImmIParser.makeReq(url)
     val gson = GsonBuilder().create()
@@ -114,7 +114,7 @@ object ImmIParser {
     return head + category_of_index + api + query + city_name;
   }
 
-  fun normalization(value: Int): Int {
+  fun normalization(value: Double): Double {
     return (value + 2) * 25
   }
 }
@@ -127,31 +127,31 @@ class QIndices(
   val groceries_index: Double)
 
 class HealthQIndices(
-  val skill_and_competency: Int,
-  val speed: Int,
-  val cost: Int,
-  val responsiveness_waitings: Int,
-  val accuracy_and_completeness: Int,
-  val friendliness_and_courtesy: Int,
-  val modern_equipment: Int,
-  val location: Int)
+  val skill_and_competency: Double,
+  val speed: Double,
+  val cost: Double,
+  val responsiveness_waitings: Double,
+  val accuracy_and_completeness: Double,
+  val friendliness_and_courtesy: Double,
+  val modern_equipment: Double,
+  val location: Double)
 
 class CrimeQIndices(
-  val worried_attacked: Int,
-  val problem_property_crimes: Int,
-  val safe_alone_night: Int,
-  val worried_skin_ethnic_religion: Int,
-  val worried_car_stolen: Int,
-  val worried_home_broken: Int,
-  val worried_things_car_stolen: Int,
-  val crime_increasing: Int,
-  val problem_corruption_bribery: Int,
-  val safe_alone_daylight: Int,
-  val problem_drugs: Int,
-  val worried_insulted: Int,
-  val problem_violent_crimes: Int,
-  val worried_mugged_robbed: Int,
-  val level_of_crime: Int)
+  val worried_attacked: Double,
+  val problem_property_crimes: Double,
+  val safe_alone_night: Double,
+  val worried_skin_ethnic_religion: Double,
+  val worried_car_stolen: Double,
+  val worried_home_broken: Double,
+  val worried_things_car_stolen: Double,
+  val crime_increasing: Double,
+  val problem_corruption_bribery: Double,
+  val safe_alone_daylight: Double,
+  val problem_drugs: Double,
+  val worried_insulted: Double,
+  val problem_violent_crimes: Double,
+  val worried_mugged_robbed: Double,
+  val level_of_crime: Double)
 
 class CitiesFeed(val cities: List<City>)
 class CurrFeed(val exchange_rates: List<Currency>)
