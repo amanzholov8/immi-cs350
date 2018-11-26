@@ -4,10 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentStart="true"
-    android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
     android:layout_alignParentEnd="true"
-    android:layout_alignParentRight="true"
     android:layout_marginStart="12dp"
     android:layout_marginLeft="12dp"
     android:layout_marginTop="0dp"
@@ -21,6 +19,7 @@
         android:id="@+id/text_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Enter two cities to compare"
         android:textSize="24sp" />
 
@@ -29,8 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="10dp"
         android:hint="City 1" />
 
     <AutoCompleteTextView
@@ -38,32 +36,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:hint="City 2" />
 
     <Spinner
         android:id="@+id/indexSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp" />
+        android:layout_marginTop="10dp" />
 
     <Button
         android:id="@+id/compareButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="10dp"
         android:onClick="compareTwoCities"
         android:text="Compare" />
 
-    <TextView
-        android:id="@+id/answerText"
+    <FrameLayout
+        android:id="@+id/fragment_compare_containter"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:text="Info loading..."
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="24sp" />
-    <include layout="@layout/toolbar_layout" />
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
 </LinearLayout>
 
