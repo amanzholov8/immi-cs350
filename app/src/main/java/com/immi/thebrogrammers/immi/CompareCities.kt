@@ -13,7 +13,9 @@ import kotlinx.android.synthetic.main.activity_compare_cities.*
 
 
 class CompareCities : AppCompatActivity() {
-
+  lateinit var cityName1: String
+  lateinit var cityName2: String
+  lateinit var qindexString: String
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_compare_cities)
@@ -41,12 +43,33 @@ class CompareCities : AppCompatActivity() {
     inputCity2.setAdapter(adapter)
   }
 
+  fun getCity1(): String {
+    return cityName1
+  }
+
+  fun getCity2(): String {
+    return cityName2
+  }
+
+  fun getCategory(): String {
+    var ans: String
+    ans = when (qindexString) {
+      "Healthcare index" -> "Healthcare"
+      "Cost of living index" -> "Cost of living"
+      "Pollution index" -> "Pollution"
+      "Crime index" -> "Crime"
+      "Traffic time index" -> "Traffic"
+      else -> "Healthcare"
+    }
+    return ans
+  }
+
   fun compareTwoCities(view: View) {
     val cityInput1: EditText = findViewById<EditText>(R.id.inputCity1)
     val cityInput2: EditText = findViewById<EditText>(R.id.inputCity2)
 
-    val cityName1 = cityInput1.text.toString()
-    val cityName2 = cityInput2.text.toString()
+    cityName1 = cityInput1.text.toString()
+    cityName2 = cityInput2.text.toString()
 
     val spinnerText = indexSpinner.selectedItem.toString()
     val indMap = mapOf(
@@ -55,7 +78,7 @@ class CompareCities : AppCompatActivity() {
       "Pollution level" to "Pollution index",
       "Crime level" to "Crime index",
       "Traffic" to "Traffic time index")
-    val qindexString = indMap[spinnerText]
+    qindexString = indMap[spinnerText]!!
     val city1 = ImmIDatabase.getCityByName(cityName1)!!
     val city2 = ImmIDatabase.getCityByName(cityName2)!!
     if (city1.qIndices == null)
