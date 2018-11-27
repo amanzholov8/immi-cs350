@@ -90,6 +90,8 @@ class HealthCompare : Fragment() {
     val city2 = ImmIDatabase.getCityByName(cityName2)!!
     for ((k, v) in city1.qIndices) {
       if (ImmIDatabase.categoryMap[k] == category) {
+        if (city1.qIndices[k] == null || city2.qIndices[k] == null)
+          continue
         var valCity1 = (city1.qIndices[k]!! /* 100*/).toInt()
         var valCity2 = (city2.qIndices[k]!! /* 100*/).toInt()
         if (category == "Cost of living" && k != "Cost of living index") {
