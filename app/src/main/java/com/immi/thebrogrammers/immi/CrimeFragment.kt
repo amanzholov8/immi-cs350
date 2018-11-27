@@ -20,7 +20,7 @@ class CrimeFragment : Fragment() {
     //val searchView = inflater.inflate(R.layout.activity_main, null)
     //val cityName = searchView.findViewById<EditText>(R.id.searchBar).getText().toString()
     val cityName = arguments!!.getString("GEO_OBJECT_NAME")
-    val dataList = ImmIParser.getCrimeSubQIndices(cityName!!).toList()
+    val dataList = ImmIParser.getCrimeSubQIndices(cityName).toList()
     val data: List<ValueDataEntry> = dataList.map({ c -> ValueDataEntry(c.first, c.second.toInt()) })
     val anyChartView = view.findViewById<com.anychart.AnyChartView>(R.id.any_chart_view_crime)
     val barChart: Cartesian = AnyChart.bar()

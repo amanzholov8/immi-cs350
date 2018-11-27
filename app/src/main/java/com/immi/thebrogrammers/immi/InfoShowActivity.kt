@@ -20,6 +20,7 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
   lateinit var navigationView: NavigationView
   lateinit var bottomNavView: BottomNavigationView
   lateinit var geoName: String
+  private var firstStart = true
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -52,6 +53,13 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
     val bundle = Bundle()
     bundle.putString("GEO_OBJECT_NAME", geoName)
+
+    if (firstStart) {
+      firstStart = false
+      val tmp = CostFragment()
+      tmp.arguments = bundle
+      loadFragment(tmp)
+    }
     bottomNavView.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
       override fun onNavigationItemSelected(item: MenuItem): Boolean {
         lateinit var fragment: Fragment
