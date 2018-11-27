@@ -105,7 +105,6 @@ class CompareCities : AppCompatActivity() {
         Toast.LENGTH_SHORT
       ).show()
     }
-
     val mgr = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     mgr.hideSoftInputFromWindow(inputCity2.windowToken, 0)
   }
