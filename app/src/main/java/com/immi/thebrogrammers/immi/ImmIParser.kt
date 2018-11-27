@@ -172,13 +172,13 @@ object ImmIParser {
       "Time index" to (homefeed.index_time),
       "Time Exp. Index" to (homefeed.index_time_exp),
       "CO2 Emission Index" to (homefeed.index_co2_emission),
-      "Working from home percentage" to (homefeed.primary_means_percentage_map.Working_from_home),
-      "Car usage percentage" to (homefeed.primary_means_percentage_map.Car),
-      "Bike usage percentage" to (homefeed.primary_means_percentage_map.Bike),
-      "Motorbike usage percentage" to (homefeed.primary_means_percentage_map.Motorbike),
-      "Bus/Trolleybus usage percentage" to (homefeed.primary_means_percentage_map.Bus),
-      "Train/Metro usage percentage" to (homefeed.primary_means_percentage_map.Train),
-      "Walking percentage" to (homefeed.primary_means_percentage_map.Walking))
+      "Working from" to (homefeed.primary_means_percentage_map.Working_from_home),
+      "Car" to (homefeed.primary_means_percentage_map.Car),
+      "Bike" to (homefeed.primary_means_percentage_map.Bike),
+      "Motorbike" to (homefeed.primary_means_percentage_map.Motorbike),
+      "Bus/Trolleybus" to (homefeed.primary_means_percentage_map.Bus),
+      "Train/Metro" to (homefeed.primary_means_percentage_map.Train),
+      "Walking" to (homefeed.primary_means_percentage_map.Walking))
     ImmIDatabase.categoryMap["Time Exp. Index"] = "Traffic"
     ImmIDatabase.categoryMap["CO2 Emission Index"] = "Traffic"
     ImmIDatabase.categoryMap["Working from home percentage"] = "Traffic"
