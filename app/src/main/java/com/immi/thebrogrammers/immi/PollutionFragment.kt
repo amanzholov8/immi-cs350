@@ -20,7 +20,7 @@ class PollutionFragment : Fragment() {
     //val searchView = inflater.inflate(R.layout.activity_main, null)
     //val cityName = searchView.findViewById<EditText>(R.id.searchBar).getText().toString()
     val cityName = arguments!!.getString("GEO_OBJECT_NAME")
-    val dataList = ImmIParser.getPollutionSubQIndices(cityName).toList()
+    val dataList = ImmIParser.getPollutionSubQIndices(cityName!!).toList()
     val data: List<ValueDataEntry> = dataList.map({ c -> ValueDataEntry(c.first, c.second.toInt()) })
     val anyChartView = view.findViewById<com.anychart.AnyChartView>(R.id.any_chart_view_pollution)
     val barChart: Cartesian = AnyChart.bar()
@@ -39,7 +39,7 @@ class PollutionFragment : Fragment() {
     //barChart.xAxis(0).overlapMode(LabelsOverlapMode.ALLOW_OVERLAP)
     barChart.xAxis(0).labels().width(150)
     //barChart.pointWidth(100)
-    barChart.title("Component of health care surveyed")
+    barChart.title("$cityName: Component of pollution level surveyed")
     barChart.barsPadding(10)
     barChart.interactivity().hoverMode(HoverMode.BY_X)
 

@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.anychart.AnyChart
-import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.anychart.charts.Cartesian
 import com.anychart.enums.Anchor
@@ -16,13 +15,13 @@ import com.anychart.enums.TooltipDisplayMode
 import com.anychart.enums.TooltipPositionMode
 
 @SuppressLint("ValidFragment")
-class HealthFragment() : Fragment() {
+class HealthFragment : Fragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view = inflater.inflate(R.layout.fragment_health, null)
     //val searchView = inflater.inflate(R.layout.activity_main, null)
     //val cityName = searchView.findViewById<EditText>(R.id.searchBar).getText().toString()
     val cityName = arguments!!.getString("GEO_OBJECT_NAME")
-    val dataList = ImmIParser.getHealthSubQIndices(cityName).toList()
+    val dataList = ImmIParser.getHealthSubQIndices(cityName!!).toList()
     val data: List<ValueDataEntry> = dataList.map({ c -> ValueDataEntry(c.first, c.second.toInt()) })
     val anyChartView = view.findViewById<com.anychart.AnyChartView>(R.id.any_chart_view_health)
     val barChart: Cartesian = AnyChart.bar()
@@ -41,7 +40,7 @@ class HealthFragment() : Fragment() {
     //barChart.xAxis(0).overlapMode(LabelsOverlapMode.ALLOW_OVERLAP)
     barChart.xAxis(0).labels().width(150)
     //barChart.pointWidth(100)
-    barChart.title("Component of pollution level surveyed")
+    barChart.title("$cityName: Component of healthcare system surveyed")
     barChart.barsPadding(10)
     barChart.interactivity().hoverMode(HoverMode.BY_X)
 
@@ -63,14 +62,11 @@ class HealthFragment() : Fragment() {
     barChart.legend().inverted(true)
     barChart.legend().fontSize(13.0)
     barChart.legend().padding(0.0, 0.0, 20.0, 0.0)
-    val seriesData = mutableListOf<DataEntry>()
-    seriesData.add(ValueDataEntry("Nail polish", 20))
     val series1 = barChart.bar(data)
     series1.name("Satisfaction %")
     series1.tooltip()
       .position("right")
       .anchor(Anchor.LEFT_CENTER)
-
 
     anyChartView.setChart(barChart)
 
