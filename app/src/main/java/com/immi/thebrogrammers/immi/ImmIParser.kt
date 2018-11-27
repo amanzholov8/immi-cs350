@@ -16,6 +16,7 @@ object ImmIParser {
   val city_pollution = "city_pollution"
   val city_price = "city_prices"
   val city_traffic = "city_traffic"
+  val country_price = "country_prices"
 
   @Throws(IOException::class)
   fun run(url: String): String {
@@ -32,7 +33,7 @@ object ImmIParser {
       try {
         //Your code goes here
         ret = ImmIParser.run(url)
-        println(ret)
+        //  println(ret)
       } catch (e: Exception) {
         e.printStackTrace()
       }
@@ -172,22 +173,22 @@ object ImmIParser {
       "Time index" to (homefeed.index_time),
       "Time Exp. Index" to (homefeed.index_time_exp),
       "CO2 Emission Index" to (homefeed.index_co2_emission),
-      "Working from" to (homefeed.primary_means_percentage_map.Working_from_home),
-      "Car" to (homefeed.primary_means_percentage_map.Car),
-      "Bike" to (homefeed.primary_means_percentage_map.Bike),
-      "Motorbike" to (homefeed.primary_means_percentage_map.Motorbike),
-      "Bus/Trolleybus" to (homefeed.primary_means_percentage_map.Bus),
-      "Train/Metro" to (homefeed.primary_means_percentage_map.Train),
+      "Working from home" to (homefeed.primary_means_percentage_map.Working_from_home),
+      "Car usage" to (homefeed.primary_means_percentage_map.Car),
+      "Bike usage" to (homefeed.primary_means_percentage_map.Bike),
+      "Motorbike usage" to (homefeed.primary_means_percentage_map.Motorbike),
+      "Bus/Trolleybus usage" to (homefeed.primary_means_percentage_map.Bus),
+      "Train/Metro usage" to (homefeed.primary_means_percentage_map.Train),
       "Walking" to (homefeed.primary_means_percentage_map.Walking))
     ImmIDatabase.categoryMap["Time Exp. Index"] = "Traffic"
     ImmIDatabase.categoryMap["CO2 Emission Index"] = "Traffic"
-    ImmIDatabase.categoryMap["Working from home percentage"] = "Traffic"
-    ImmIDatabase.categoryMap["Car usage percentage"] = "Traffic"
-    ImmIDatabase.categoryMap["Bike usage percentage"] = "Traffic"
-    ImmIDatabase.categoryMap["Motorbike usage percentage"] = "Traffic"
-    ImmIDatabase.categoryMap["Bus/Trolleybus usage percentage"] = "Traffic"
-    ImmIDatabase.categoryMap["Train/Metro usage percentage"] = "Traffic"
-    ImmIDatabase.categoryMap["Walking percentage"] = "Traffic"
+    ImmIDatabase.categoryMap["Working from home"] = "Traffic"
+    ImmIDatabase.categoryMap["Car usage"] = "Traffic"
+    ImmIDatabase.categoryMap["Bike usage"] = "Traffic"
+    ImmIDatabase.categoryMap["Motorbike usage"] = "Traffic"
+    ImmIDatabase.categoryMap["Bus/Trolleybus usage"] = "Traffic"
+    ImmIDatabase.categoryMap["Train/Metro usage"] = "Traffic"
+    ImmIDatabase.categoryMap["Walking"] = "Traffic"
 
     return map
   }
@@ -205,6 +206,18 @@ object ImmIParser {
     return map
   }
 
+  fun getCountryCurrency(country_name: String): String {
+    val head = "https://www.numbeo.com/api/"
+    val api = "?api_key=1yj7w26vkf03z6"
+    val query = "&country="
+    val url = head + country_price + api + query + country_name
+    val body = ImmIParser.makeReq(url)
+    val gson = GsonBuilder().create()
+    val homefeed = gson.fromJson(body, CountryPrice::class.java)
+    return homefeed.currency
+  }
+
+
   fun buildURL(category_of_index: String, city_name: String): String {
     val head = "https://www.numbeo.com/api/"
     val api = "?api_key=1yj7w26vkf03z6"
@@ -216,6 +229,10 @@ object ImmIParser {
     return (value + 2) * 25
   }
 }
+
+class CountryPrice(
+  val name: String,
+  val currency: String)
 
 class GrocerItem(
   val item_name: String,
