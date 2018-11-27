@@ -61,7 +61,8 @@ object ImmIParser {
     val body = ImmIParser.makeReq(url)
     val gson = GsonBuilder().create()
     val homefeed = gson.fromJson(body, QIndices::class.java)
-    val map = mutableMapOf("Crime index" to homefeed.crime_index,
+    val map = mutableMapOf(
+      "Crime index" to homefeed.crime_index,
       "Traffic time index" to homefeed.traffic_time_index,
       "Healthcare index" to homefeed.health_care_index,
       "Pollution index" to homefeed.pollution_index,
@@ -79,7 +80,8 @@ object ImmIParser {
     val body = ImmIParser.makeReq(url)
     val gson = GsonBuilder().create()
     val homefeed = gson.fromJson(body, HealthQIndices::class.java)
-    val map = mutableMapOf("Skill and competency of medical staff" to normalization(homefeed.skill_and_competency),
+    val map = mutableMapOf(
+      "Skill and competency of medical staff" to normalization(homefeed.skill_and_competency),
       "Speed in completing examination and reports" to normalization(homefeed.speed),
       "Equipment for modern diagnosis and treatment" to normalization(homefeed.modern_equipment),
       "Accuracy and completeness in filling out reports" to normalization(homefeed.accuracy_and_completeness),
@@ -102,7 +104,7 @@ object ImmIParser {
     val body = ImmIParser.makeReq(url)
     val gson = GsonBuilder().create()
     val homefeed = gson.fromJson(body, CrimeQIndices::class.java)
-    val map = mutableMapOf("\n" +
+    val map = mutableMapOf(
       "Level of crime" to normalization(homefeed.level_of_crime),
       "Crime increasing in the past 3 years" to normalization(homefeed.crime_increasing),
       "Worries home broken and things stolen" to normalization(homefeed.worried_home_broken),
@@ -141,7 +143,8 @@ object ImmIParser {
     val body = ImmIParser.makeReq(url)
     val gson = GsonBuilder().create()
     val homefeed = gson.fromJson(body, PollutionQIndices::class.java)
-    val map = mutableMapOf("Air quality" to normalization(homefeed.air_quality),
+    val map = mutableMapOf(
+      "Air quality" to normalization(homefeed.air_quality),
       "Drinking water quality and accessibility" to normalization(homefeed.drinking_water_quality_accessibility),
       "Garbage disposal satisfaction" to normalization(homefeed.garbage_disposal_satisfaction),
       "Clean and tidy" to normalization(homefeed.clean_and_tidy),
@@ -165,11 +168,8 @@ object ImmIParser {
     val body = ImmIParser.makeReq(url)
     val gson = GsonBuilder().create()
     val homefeed = gson.fromJson(body, TrafficQIndices::class.java)
-//    homefeed.primary_means_percentage_map.Working_from_home = 100 - ((homefeed.primary_means_percentage_map.Car) +
-//      (homefeed.primary_means_percentage_map.Bike) + (homefeed.primary_means_percentage_map.Motorbike) +
-//      (homefeed.primary_means_percentage_map.Bus) + (homefeed.primary_means_percentage_map.Train) +
-//      (homefeed.primary_means_percentage_map.Walking));
-    val map = mutableMapOf("Time index" to (homefeed.index_time),
+    val map = mutableMapOf(
+      "Time index" to (homefeed.index_time),
       "Time Exp. Index" to (homefeed.index_time_exp),
       "CO2 Emission Index" to (homefeed.index_co2_emission),
       "Working from home percentage" to (homefeed.primary_means_percentage_map.Working_from_home),

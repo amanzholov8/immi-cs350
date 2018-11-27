@@ -41,13 +41,17 @@ class HealthCompare : Fragment() {
       "function() {\n" +
         "    return Math.abs(this.value).toLocaleString();\n" +
         "  }")
+    barChart.barGroupsPadding(2)
     barChart.yAxis((0))
     barChart.yScale().maximum(100)
     barChart.yScale().minimum(0)
     barChart.xAxis(0).labels().width(150)
     barChart.yAxis(0).title("Percentage")
     barChart.xAxis(0).overlapMode(LabelsOverlapMode.ALLOW_OVERLAP)
-    barChart.barsPadding(10)
+    barChart.barsPadding(0)
+    barChart.barGroupsPadding(0.5)
+    barChart.yAxis(0).width()
+    //barChart.width(8)
 //    val xAxis1: Linear = barChart.xAxis(1)
 //    xAxis1.enabled(true)
 //    xAxis1.orientation(Orientation.RIGHT)
@@ -78,9 +82,9 @@ class HealthCompare : Fragment() {
     val cityName2 = activity.getCity2()
     val category = activity.getCategory()
     barChart.title("Comparison by $category")
-    barChart.xScroller().allowRangeChange(false)
+    barChart.xScroller(true)
     val scale = barChart.xScale()
-    barChart.xZoom().setToPointsCount(6, false, scale)
+    barChart.xZoom().setToPointsCount(5, false, scale)
 
     val city1 = ImmIDatabase.getCityByName(cityName1)!!
     val city2 = ImmIDatabase.getCityByName(cityName2)!!
@@ -105,20 +109,11 @@ class HealthCompare : Fragment() {
         }
 
 
-        seriesData.add(CustomDataEntry(k, valCity1, 1 * valCity2))
+        seriesData.add(CustomDataEntry(k, valCity1, valCity2))
       }
     }
 
 
-//    seriesData.add(CustomDataEntry("Nail polish", 5376, -229))
-//    seriesData.add(CustomDataEntry("Eyebrow pencil", 10987, -932))
-//    seriesData.add(CustomDataEntry("Rouge", 7624, -5221))
-//    seriesData.add(CustomDataEntry("Lipstick", 8814, -256))
-//    seriesData.add(CustomDataEntry("Eyeshadows", 8998, -308))
-//    seriesData.add(CustomDataEntry("Eyeliner", 9321, -432))
-//    seriesData.add(CustomDataEntry("Foundation", 8342, -701))
-//    seriesData.add(CustomDataEntry("Lip gloss", 6998, -908))
-//    seriesData.add(CustomDataEntry("Mascara", 9261, -712))
 
     val set = Set.instantiate()
     set.data(seriesData)
@@ -131,13 +126,14 @@ class HealthCompare : Fragment() {
 //    series1.tooltip()
 //      .position("right")
 //      .anchor(Anchor.LEFT_CENTER)
-
+    //series1.y.width(8)
     val series2 = barChart.bar(series2Data)
     series2.name(cityName2)
 //    series2.tooltip()
 //      .position("left")
 //      .anchor(Anchor.RIGHT_CENTER)
 //
+    //series2.width(8)
     barChart.legend().enabled(true)
     barChart.legend().inverted(true)
     barChart.legend().fontSize(13.0)

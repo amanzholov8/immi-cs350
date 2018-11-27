@@ -26,7 +26,7 @@
 
     <string-array name="indexArray">
         <item>Healthcare quality</item>
-        <item>Cost of groceries</item>
+        <item>Cost of living</item>
         <item>Pollution level</item>
         <item>Crime level</item>
         <item>Traffic</item>
