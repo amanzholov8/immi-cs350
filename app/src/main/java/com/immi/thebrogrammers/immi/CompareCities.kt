@@ -74,7 +74,7 @@ class CompareCities : AppCompatActivity() {
     val spinnerText = indexSpinner.selectedItem.toString()
     val indMap = mapOf(
       "Healthcare quality" to "Healthcare index",
-      "Cost of groceries" to "Cost of living index",
+      "Cost of living" to "Cost of living index",
       "Pollution level" to "Pollution index",
       "Crime level" to "Crime index",
       "Traffic" to "Traffic time index")
