@@ -39,7 +39,7 @@ class PollutionFragment : Fragment() {
     //barChart.xAxis(0).overlapMode(LabelsOverlapMode.ALLOW_OVERLAP)
     barChart.xAxis(0).labels().width(150)
     //barChart.pointWidth(100)
-    barChart.title("$cityName: Component of pollution level surveyed")
+    barChart.title("Component of pollution level surveyed")
     barChart.barsPadding(10)
     barChart.interactivity().hoverMode(HoverMode.BY_X)
 

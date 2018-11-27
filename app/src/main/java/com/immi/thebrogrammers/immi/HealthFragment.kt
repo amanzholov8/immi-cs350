@@ -40,7 +40,7 @@ class HealthFragment : Fragment() {
     //barChart.xAxis(0).overlapMode(LabelsOverlapMode.ALLOW_OVERLAP)
     barChart.xAxis(0).labels().width(150)
     //barChart.pointWidth(100)
-    barChart.title("$cityName: Component of healthcare system surveyed")
+    barChart.title("Component of healthcare system surveyed")
     barChart.barsPadding(10)
     barChart.interactivity().hoverMode(HoverMode.BY_X)
 

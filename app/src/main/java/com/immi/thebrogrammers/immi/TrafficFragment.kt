@@ -19,7 +19,7 @@ class TrafficFragment : Fragment() {
     val pieChartView = view.findViewById<com.anychart.AnyChartView>(R.id.pie_chart_view_traffic)
     val pie = AnyChart.pie()
     pie.data(dataList.map({ c -> ValueDataEntry(c.first, c.second) }))
-    pie.title("$cityName: Transport means surveyed")
+    pie.title("Transport means surveyed")
     pieChartView.setChart(pie)
     return view
   }

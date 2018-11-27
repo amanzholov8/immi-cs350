@@ -39,7 +39,7 @@ class CrimeFragment : Fragment() {
     //barChart.xAxis(0).overlapMode(LabelsOverlapMode.ALLOW_OVERLAP)
     barChart.xAxis(0).labels().width(150)
     //barChart.pointWidth(100)
-    barChart.title("$cityName: Component of crime surveyed")
+    barChart.title("Component of crime surveyed")
     barChart.barsPadding(10)
     barChart.interactivity().hoverMode(HoverMode.BY_X)
 
