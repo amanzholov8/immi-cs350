@@ -19,13 +19,12 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
   lateinit var drawerLayout: DrawerLayout
   lateinit var navigationView: NavigationView
   lateinit var bottomNavView: BottomNavigationView
-
+  lateinit var geoName: String
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.navigation_drawer)
 
-    var geo_name: String
     if (intent.hasExtra("GEO_OBJECT_NAME")) {
       cityText.text = intent.getStringExtra("GEO_OBJECT_NAME")!!
       val curCity = (ImmIDatabase.getCityByName(cityText.text.toString()))
@@ -33,7 +32,7 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
       //countryText.setText(curCity?.currency)
     }
 
-    val geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
+    geoName = intent.getStringExtra("GEO_OBJECT_NAME")!!
     Log.d("debug_info", geoName)
     //textview_title.text = geoName
 
@@ -51,10 +50,8 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
     bottomNavView = findViewById(R.id.bottom_navigation)
 
-    val qindex = ImmIDatabase.qindices
-
-    loadFragment(CostFragment())
-
+    val bundle = Bundle()
+    bundle.putString("GEO_OBJECT_NAME", geoName)
     bottomNavView.setOnNavigationItemSelectedListener(object : BottomNavigationView.OnNavigationItemSelectedListener {
       override fun onNavigationItemSelected(item: MenuItem): Boolean {
         lateinit var fragment: Fragment
@@ -78,13 +75,18 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
           R.id.action_med -> {
             fragment = HealthFragment()
           }
+
+          else -> {
+            fragment = CostFragment()
+          }
         }
+        fragment.arguments = bundle
         return loadFragment(fragment)
       }
     })
   }
-  
-  fun loadFragment(fragment: Fragment): Boolean {
+
+  fun loadFragment(fragment: Fragment?): Boolean {
     if (fragment != null) {
       supportFragmentManager.beginTransaction()
         .replace(R.id.fragment_container, fragment)
