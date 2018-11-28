@@ -58,6 +58,8 @@ class HealthFragment : Fragment() {
           "      return '<span style=\"color: #D9D9D9\">%</span>' + Math.abs(this.value).toLocaleString();\n" +
           "    }")
     barChart.xScroller(true)
+    val scale = barChart.xScale()
+    barChart.xZoom().setToPointsCount(5, false, scale)
     barChart.legend().enabled(true)
     barChart.legend().inverted(true)
     barChart.legend().fontSize(13.0)

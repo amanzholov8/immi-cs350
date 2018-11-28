@@ -88,6 +88,8 @@ class HealthCompare : Fragment() {
 
     val city1 = ImmIDatabase.getCityByName(cityName1)!!
     val city2 = ImmIDatabase.getCityByName(cityName2)!!
+    val currencyCity1 = ImmIParser.getCountryCurrency(city1.country)
+    val currencyCity2 = ImmIParser.getCountryCurrency(city2.country)
     for ((k, v) in city1.qIndices) {
       if (ImmIDatabase.categoryMap[k] == category) {
         if (city1.qIndices[k] == null || city2.qIndices[k] == null)
@@ -95,10 +97,12 @@ class HealthCompare : Fragment() {
         var valCity1 = (city1.qIndices[k]!! /* 100*/).toInt()
         var valCity2 = (city2.qIndices[k]!! /* 100*/).toInt()
         if (category == "Cost of living" && k != "Cost of living index") {
-          val maxVal = (valCity1 + valCity2).toDouble()
+
+          val valInDoubleCity1 = ImmIDatabase.convertCurrencies(currencyCity1, currencyCity2, valCity1.toDouble())
+          val maxVal = (valCity2.toDouble() + valInDoubleCity1)
           if (maxVal != 0.0) {
-            valCity1 = (valCity1 * 100.0 / maxVal).toInt()
             valCity2 = (valCity2 * 100.0 / maxVal).toInt()
+            valCity1 = (valInDoubleCity1 * 100.0 / maxVal).toInt()
           }
 //          valCity1 *= 50;
 //          valCity2 *= 50;

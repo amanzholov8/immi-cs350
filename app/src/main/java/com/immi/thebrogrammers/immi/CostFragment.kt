@@ -14,10 +14,11 @@ class CostFragment : Fragment() {
     val cityName = arguments!!.getString("GEO_OBJECT_NAME")
     val dataList = ImmIParser.getGroceriesSubQIndices(cityName!!).toList()
     var scroll: ListView = view.findViewById<ListView>(R.id.price_view)
+    val currency = ImmIParser.getCountryCurrency(ImmIDatabase.getCityByName(cityName)!!.country)
     scroll.adapter = ArrayAdapter<String>(
       activity,
       android.R.layout.simple_list_item_1,
-      dataList.map({ c -> "%s - %.2f".format(c.first, c.second) }))
+      dataList.map({ c -> "%s - %.2f %s".format(c.first, c.second, currency) }))
     return view
   }
 }

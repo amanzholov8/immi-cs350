@@ -26,11 +26,6 @@
 
         </item>
 
-        <item
-            android:id="@+id/location_id"
-            android:title="@string/geo_location">
-
-        </item>
 
     </group>
 </menu>

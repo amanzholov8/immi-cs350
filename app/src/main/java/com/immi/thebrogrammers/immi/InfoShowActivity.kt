@@ -126,10 +126,6 @@ class InfoShowActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         geoLocationIntent.putExtra("GEO_OBJECT_NAME", geoName)
         startActivity(geoLocationIntent)
       }
-      R.id.location_id -> {
-        val homeIntent = Intent(this, MainActivity::class.java)
-        startActivity(homeIntent)
-      }
     }
     return true
   }
