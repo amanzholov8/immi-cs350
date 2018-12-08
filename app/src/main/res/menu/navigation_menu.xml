@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:app="http://schemas.android.com/apk/res-autp">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home_id"
+            android:title="@string/home">
+
+        </item>
+
+        <item
+            android:id="@+id/compare_id"
+            android:title="@string/compare_cities">
+
+        </item>
+
+        <item
+            android:id="@+id/converter_id"
+            android:title="@string/currency_converter">
+
+        </item>
+
+        <item
+            android:id="@+id/nearby_id"
+            android:title="@string/nearby_cities">
+
+        </item>
+
+
+    </group>
+</menu>

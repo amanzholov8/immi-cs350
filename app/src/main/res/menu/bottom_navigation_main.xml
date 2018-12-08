@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-autp">
+    <item
+        android:id="@+id/action_money"
+        android:enabled="true"
+        android:icon="@drawable/if_money"
+        android:title="@string/living_cost"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_crime"
+        android:enabled="true"
+        android:icon="@drawable/if_crime"
+        android:title="@string/crime_rate"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_eco"
+        android:enabled="true"
+        android:icon="@drawable/if_pollution"
+        android:title="@string/pollution"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_traffic"
+        android:enabled="true"
+        android:icon="@drawable/if_traffic"
+        android:title="@string/traffic"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_med"
+        android:enabled="true"
+        android:icon="@drawable/if_med"
+        android:title="@string/medicine"
+        app:showAsAction="ifRoom" />
+
+</menu>

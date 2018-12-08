@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">ImmI</string>
+    <string name="geoLocationHeading">You are located in the city of %s.</string>
+    <string name="search_bar_hint">Please select a country or city</string>
+    <string name="search_button">Search</string>
+    <string name="city_placeholder">City placeholder</string>
+    <string name="traffic">Traffic</string>
+    <string name="pollution">Pollution</string>
+    <string name="crime_rate">Crime rate</string>
+    <string name="living_cost">Living cost</string>
+    <string name="medicine">Medicine</string>
+    <string name="country">Country</string>
+    <string name="krw">KRW</string>
+    <string name="press_to_open_sidebar">Press to open sidebar</string>
+    <string name="immi">ImmI</string>
+    <string name="home">Home</string>
+    <string name="compare_cities">Compare cities</string>
+    <string name="currency_converter">Currency converter</string>
+    <string name="nearby_cities">Nearby cities</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="geo_location">Geo location</string>
+    <string name="united_arab_emirates">United Arab Emirates</string>
+    <string name="aed">AED</string>
+    <string name="dubai">Dubai</string>
+
+    <string-array name="indexArray">
+        <item>Healthcare quality</item>
+        <item>Cost of living</item>
+        <item>Pollution level</item>
+        <item>Crime level</item>
+        <item>Traffic</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
