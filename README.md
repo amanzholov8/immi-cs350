@@ -2,11 +2,11 @@
 The project for CS350 course at KAIST. 
 
 ## Developers: 
-* Anuar Talipov
-* Alim Amanzholov 
-* Kunduz Baryktabasova 
-* Bauyrzhan Tokenov
-* Miras Kabdygali
+* Anuar Talipov ([@AnuarTB](https://github.com/AnuarTB))
+* Alim Amanzholov ([@amanzholov8](https://github.com/amanzholov8))
+* Kunduz Baryktabasova ([@kunduzb17](https://github.com/kunduzb17))
+* Bauyrzhan Tokenov ([@BaurTokenov](https://github.com/BaurTokenov))
+* Miras Kabdygali ([@miraskab](https://github.com/miraskab))
 
 ## For developers
 
