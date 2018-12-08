@@ -54,7 +54,7 @@ class PollutionFragment : Fragment() {
       .offsetY(0)
       .format(
         "function() {\n" +
-          "      return '<span style=\"color: #D9D9D9\">%</span>' + Math.abs(this.value).toLocaleString();\n" +
+          "      return Math.abs(this.value).toLocaleString() + '<span style=\"color: #D9D9D9\">%</span>';\n" +
           "    }")
     barChart.xScroller(true)
     val scale = barChart.xScale()
