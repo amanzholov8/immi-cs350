@@ -11,7 +11,7 @@ The project for CS350 course at KAIST.
 
 ## Demo
 
-<img src="https://github.com/AnuarTB/immi-cs350/blob/master/experimental/demo.gif" width="360px" height="640px">
+https://drive.google.com/file/d/1FCy-RKWIItUdLmbRbRJbguA1fQqtlbG3/view?usp=sharing
 
 ## For developers
 
