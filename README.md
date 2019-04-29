@@ -13,8 +13,8 @@ The project for CS350 course at KAIST.
 
 https://drive.google.com/file/d/1FCy-RKWIItUdLmbRbRJbguA1fQqtlbG3/view?usp=sharing
 
-## For developers
+## Documentation (Sprint 2)
 
-[Guide](https://docs.google.com/document/d/1Rr2o4yHyNavgIcta9G8yB3SuXah0ct9nzcQqgj0au08/edit?usp=sharing) for setting up the project: 
+https://docs.google.com/document/d/1RZw6L6wD1RWLxQWPsp48Y0KCfNkhcVom_yTOM45Lz3c/edit?usp=sharing
 
 
